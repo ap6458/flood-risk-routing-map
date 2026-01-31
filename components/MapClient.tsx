@@ -6,4 +6,6 @@ const Map = dynamic(() => import("./Map"), {
   ssr: false,
 });
 
-export default Map;
+export default function MapClient(props: any) {
+  return <Map {...props} />;
+}

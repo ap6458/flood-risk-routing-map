@@ -1,84 +1,289 @@
-/* Reset */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Base */
-html,
+/* =========================
+   BODY
+   ========================= */
 body {
-  height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue",
-    Arial, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+  background: #bf9675;
+  color: #452711;
+  
 }
 
-/* Page container */
-.page {
-  padding: 12px;
+/* =========================
+   APP LAYOUT
+   ========================= */
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100%;
 }
 
-/* Header */
-h2 {
-  margin-bottom: 10px;
+/* =========================
+   SIDEBAR
+   ========================= */
+.sidebar {
+  width: 360px;
+  background: #bf9675;
+  color: #452711 ;
+  padding: 24px;
+  border-right: 1px solid #e6e9ef;
+  overflow-y: auto;
 }
 
-/* Input card */
-.route-card {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  max-width: 900px;
-  margin-bottom: 10px;
+/* =========================
+   TITLE
+   ========================= */
+.title {
+  text-align: center;
+  font-weight: 1000;
+  font-size: 1.6rem;
+  color: #452711;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
 }
 
-/* Inputs row */
+/* =========================
+   ROUTE INPUT
+   ========================= */
+.route {
+  margin-bottom: 16px;
+}
+
+.route input {
+  width: 50%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  color: white;
+  background:#692f10;
+  font-size: 0.95rem;
+}
+
+.route input::placeholder {
+  color: white;
+}
+
 .route-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 14px;
+  margin-top: 8px;
 }
 
-input,
-select {
-  padding: 8px 10px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.route-row select,
+.route-row button {
   flex: 1;
-  min-width: 180px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.95rem;
 }
 
-button {
-  padding: 8px 14px;
-  background: #2563eb;
+.route-row select {
+  background: #634027;
+  color: #ffffff;
+}
+
+.route-row button {
+  background: #634027;
   color: white;
-  border: none;
-  border-radius: 4px;
+  font-weight: 500;
   cursor: pointer;
 }
 
-button:hover {
-  background: #1d4ed8;
+.route-row button:hover {
+  background: #523520;
 }
 
-/* Info bar */
-.info-bar {
-  display: flex;
-  gap: 16px;
-  margin-top: 6px;
-  font-size: 14px;
+/* =========================
+   ROUTE LIST
+   ========================= */
+.route-list {
+  margin-top: 26px;
 }
 
-/* Map */
-.leaflet-container {
-  width: 100%;
-  height: 75vh;
+.route-list h3 {
+  margin-bottom: 12px;
+  font-size: 1.05rem;
+  color: #452711;
+}
+
+/* =========================
+   ROUTE CARDS
+   ========================= */
+.route-card {
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  border-radius: 16px;
+  cursor: pointer;
+  border: 1px solid #e6e9ef;
+  transition: all 0.2s ease;
+}
+
+.route-card strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #761623;
+}
+
+.route-card p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.route-card:hover {
+  background: #eef2ff;
+}
+
+.route-card.active {
+  border: 2px solid #a5b4fc;
+  background: #e0e7ff;
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
   border-radius: 8px;
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 999;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #f0f4ff;
+}
+
+ 
+
+.flood-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #d6a4d4;
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  font-size: 13px;
+  z-index: 1000;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  gap: 8px;
+}
+
+.box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.box.red {
+  background: #e74c3c;
+}
+
+.box.orange {
+  background: #f39d34;
+}
+
+.box.yellow {
+  background: #f1c401;
+}
+
+.box.green {
+  background: #2ecc71;
+}
+/* =========================
+   MAP AREA
+   ========================= */
+.map-area {
+  flex: 1;
+}
+
+/* =========================
+   LEAFLET MAP
+   ========================= */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+.leaflet-Tooltip {
+  background: white;
+  color: #0f224c;
+  border-radius: 10px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+.report-container {
+  margin-top: 20px;
+}
+
+.report-btn {
+  background: #634027;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.report-card {
+  background: white;
+  
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-card select,
+.report-card textarea {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.report-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.report-actions button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.report-actions .cancel {
+  background: #e5e7eb;
 }

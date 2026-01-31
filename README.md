@@ -1,17 +1,20 @@
 # Flood Risk Route Planner
 
-A web-based routing system that displays real road routes and ETAs using OpenStreetMap and Mapbox APIs.
+A web-based flood risk routing system that displays real road routes and ETAs using OpenStreetMap and Mapbox APIs.
 
 ## Features
 - Driving, Walking, Cycling routes
 - ETA and distance calculation
 - Interactive map with markers
+- Flood risk score routing
 
 ## Tech Stack
 - Next.js
 - React
 - Leaflet (OSM)
 - Mapbox APIs
+- -mongodb
+  
 
 ## Setup
 1. Clone repo
